@@ -1,18 +1,13 @@
- const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-// mongoose.connect("mongodb://localhost:27017/students-api", {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     useCreateIndex: true
-// }).then(() => {
-//     console.log("Connection Successfully");
-// }).catch((e) => {
-//     console.log("No Connection");
-// })
+const connectDatabase = () => {
+    mongoose.connect("mongodb://localhost:27017/test", {
+        useNewUrlParser:true,
+        useUnifiedTopology: true,
+    }).then((data) =>{
+         console.log(`mongodb is conncted with server: ${data.connection.host}`);
+    })
+}
 
-mongoose.connect("mongodb://localhost/walletBalance")
-mongoose.connection.once('open', function(){
-console.log("Connection Successfully");
-}).on('error', function(error){
-    console.log("No Connection", error);
-})
+module.exports = connectDatabase
+
